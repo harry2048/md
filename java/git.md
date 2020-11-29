@@ -22,7 +22,7 @@ git checkout . && git clean -xdf
 https://blog.csdn.net/leedaning/article/details/51304690
 ```
 
-
+> git add -u . 不一定能将所有的修改添加
 
 ## 3. 撤回commit  未push
 
