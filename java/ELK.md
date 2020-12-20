@@ -352,6 +352,8 @@ output {
      # 索引以filebeat中设置的tag变量开头，也可以不以这个开头
      index => "%{[fields][tag]}-%{+YYYY.MM.dd}"
    }
+   # 测试时打印到console
+   #stdout { codec => rubydebug}
 }
 ```
 

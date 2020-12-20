@@ -148,7 +148,14 @@ SENTINEL sentinels mymaster
 
   allkeys-lfu 对所有key进行LFU淘汰
 
+## 3. redis混合持久化
 
+> https://zhuanlan.zhihu.com/p/101566850
+>
+> 5.0之后默认开启混合持久化；aof重写后、可能包含rdb二进制数据。
+> 重写完成后的appendonly.aof，后续增量命令，还会以aof方式追加。
+>
+> 4.0版本的混合持久化默认关闭的，通过`aof-use-rdb-preamble`配置参数控制，yes则表示开启，no表示禁用，5.0之后默认开启。
 
 
 
