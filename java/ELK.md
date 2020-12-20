@@ -265,6 +265,25 @@ http.cors.allow-origin: "*"
 -Xmx1g
 ```
 
+### ES线程池配置
+
+> https://blog.csdn.net/weixin_34150830/article/details/90102607
+>
+> 内部维护多个线程池
+>
+> index：此线程池用于索引和删除操作。它的类型默认为fixed，size默认为可用处理器的数量，队列的size默认为300。
+> search：此线程池用于搜索和计数请求。它的类型默认为fixed，size默认为可用处理器的数量乘以3，队列的size默认为1000。
+> suggest：此线程池用于建议器请求。它的类型默认为fixed，size默认为可用处理器的数量，队列的size默认为1000。
+> get：此线程池用于实时的GET请求。它的类型默认为fixed，size默认为可用处理器的数量，队列的size默认为1000。
+> bulk：此线程池用于批量操作。它的类型默认为fixed，size默认为可用处理器的数量，队列的size默认为50。
+> percolate：此线程池用于预匹配器操作。它的类型默认为fixed，size默认为可用处理器的数量，队列的size默认为1000。
+
+```yml
+threadpool.index.type: fixed
+threadpool.index.size: 100
+threadpool.index.queue_size: 500
+```
+
 
 
 ## Logstash
