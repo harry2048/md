@@ -279,6 +279,7 @@ http.cors.allow-origin: "*"
 > percolate：此线程池用于预匹配器操作。它的类型默认为fixed，size默认为可用处理器的数量，队列的size默认为1000。
 
 ```yml
+# 手动指定fixed线程池大小
 threadpool.index.type: fixed
 threadpool.index.size: 100
 threadpool.index.queue_size: 500
