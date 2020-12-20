@@ -67,3 +67,7 @@ exit
 ```
 
 .gitignore  是要复制的文件全称
+
+## 8. ssh公钥
+
+> https://blog.csdn.net/feinifi/article/details/71169885
