@@ -269,3 +269,8 @@ System.out.println(encodedText);
 System.out.println(new String(decoder.decode(encodedText), "UTF-8"));
 ```
 
+### 对称加密+非对称加密
+
+> 对称密钥使用非对称加密，数据使用对称密钥加密；使用非对称解密对称密钥，使用对称密钥解密数据
+>
+> https://blog.csdn.net/Aminy123/article/details/81871092
