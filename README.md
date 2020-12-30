@@ -4,3 +4,7 @@
 4. git
 5. log4j2
 6. maven
+7. nginx
+8. web
+9. RSA
+10. jwt
