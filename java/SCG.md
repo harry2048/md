@@ -287,6 +287,8 @@ public class AddSignatureGatewayFilterFactory extends AbstractGatewayFilterFacto
 
                             // TODO 设置签名
                             System.out.println("response body:"+new String(content));
+                            //this.getHeaders().set("headName","headValue");
+                            //String headerName = exchange.getResponse().getHeaders().getFirst("headerName");
                             return exchange.getResponse().bufferFactory().wrap(content);
                         }));
                     }
@@ -305,6 +307,8 @@ public class AddSignatureGatewayFilterFactory extends AbstractGatewayFilterFacto
                         buf.read(b);
                         // TODO 验签...
                         System.out.println("request body:"+new String(b));
+                        //this.getHeaders().set("headName","headValue");
+                        //String headerName = exchange.getResponse().getHeaders().getFirst("headerName");
                         return dataBuffer;
                     });
                     return map;
