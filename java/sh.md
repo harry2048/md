@@ -14,7 +14,7 @@ usage() {
 	echo "Example:"
 	echo " $thisname psjzd.unl \"select fieldname,mycomment from psjzd\""
 	echo " $thisname -g false -w true"
-	
+	echo
 	exit 1
 }
 SERVERIP=""
