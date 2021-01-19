@@ -16,7 +16,7 @@ usage() {
 	echo " $thisname -g false -w true"
 	
 	exit 1
-}
+} 
 SERVERIP=""
 isLogDB=""
 isWriteDbSync=""
