@@ -46,9 +46,13 @@ git push
 
 ## 5. 暂存本地修改
 
-git stash -u
+git stash -u 
+
+git stash save -u  “msg of stash” 
 
 > 应用暂存  git stash apply 0 
+>
+> 使用save可以加注释信息
 
 ## 6. 删除remote代码，保留本地
 
