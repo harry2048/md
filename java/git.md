@@ -19,7 +19,7 @@ git config --global user.email gengwei1024@163.com   #电子邮件地址
 
 添加 add
 
-> git add -u . 不一定能将所有的修改添加
+> git add -u .  不一定能将所有的修改添加
 >
 > git add -A  将所有修改添加到暂存区
 

@@ -292,18 +292,22 @@
 
 ```xml
 <!-- 在pom文件中添加 -->
-<plugins>
-    <plugin>
-        <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>3.6.1</version>
-        <configuration>
-            <path>/</path>
-            <port>8080</port>
-        </configuration>
-    </plugin>
-</plugins>
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/</path>
+                    <port>8080</port>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
 ```
 
-
+https://blog.csdn.net/ron03129596/article/details/79161139
 
