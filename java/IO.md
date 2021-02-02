@@ -179,5 +179,14 @@ $(function () {
 #3 spring.servlet.multipart.max-request-size=100Mb
 ```
 
+## 将byte[] 读到另一个byte[]
+
+```java
+byte[] bytes = recv;
+byte[] sopType = new byte[1];
+System.arraycopy(bytes, 66,sopType, 0, 1);
+String type = new String(sopType);
+```
+
 
 
