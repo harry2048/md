@@ -174,7 +174,7 @@ logging:
             <AppenderRef ref="rollingFileInfo"/>
             <AppenderRef ref="Console"/>
         </AsyncLogger >
-        <!-- 缺省输出 -->
+        <!-- 缺省输出,当没有配置时,走root配置 -->
         <root level="INFO">
             <appender-ref ref="Console"/>
             <appender-ref ref="rollingFileInfo"/>
