@@ -73,6 +73,18 @@ SELECT *
  WHERE table_alias.rowno >= 10
 ```
 
+#### 新增时主键id为序列
+
+```xml
+<!-- keyProperty为主键name，新增后，vo.getId()可以获取主键 -->
+<insert id="insertUser" parameterType="com.vo.TestVO">
+	<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    	select xulie.Nextval from dual
+    </selectKey>
+    insert into user(ID,NAME,EMAIL) values (#{id},#{name},#{email})
+</insert>
+```
+
 
 
 ### mysql
