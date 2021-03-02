@@ -73,7 +73,7 @@
 
         <!--使用 rootLogger 配置 日志级别 level="trace"-->
         <Root level="trace">
-            <!--指定日志使用的处理器-->
+            <!--指定日志使用的处理器的日志级别-->
             <AppenderRef ref="Console" />
         </Root>
     </Loggers>

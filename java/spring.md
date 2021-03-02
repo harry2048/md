@@ -37,3 +37,31 @@ public class PoinGlobalUtil {
 
 ```
 
+## SpringUtil -> SpringBean
+
+> 通过springBean获取指定类的SpringBean
+
+```java
+@Component
+public class SpringBean {
+    private static ApplicationContext springContext;
+
+    public static Object getBean(String name) {
+        return springContext.getBean(name);
+    }
+
+    public static <T> T getBean(Class<T> clazz) {
+        return springContext.getBean(clazz);
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext ac) throws Exception {
+        SpringBean.springContext = applicationContext;
+    }
+
+    public static ApplicationContext getApplicationContext() {
+        return springContext;
+    }
+}
+```
+
