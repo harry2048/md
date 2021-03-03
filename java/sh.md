@@ -55,7 +55,19 @@ fi
 
 ```
 
+## 精简版
 
+```sh
+aa=$1
+result=$(curl -H "Content-type: application/json" -X POST -o /dev/null -s -w %{http_code} -d '[{"aa":"'${aa}'","bb":"0","cc":"0"}]' URL)
+echo $result
+```
+
+> -o /dev/null 屏蔽原有输出信息
+>
+> -s silent 静音模式。不输出任何东西
+>
+> -w %{http_code} 控制额外输出
 
 
 

@@ -65,3 +65,8 @@ public class SpringBean {
 }
 ```
 
+## redis实现session共享
+
+https://www.cnblogs.com/david1216/p/11468772.html
+
+https://blog.csdn.net/liuxiao723846/article/details/80733565
