@@ -67,7 +67,7 @@ echo $result
 >
 > -s silent 静音模式。不输出任何东西
 >
-> -w %{http_code} 控制额外输出
+> -w %{http_code} 控制额外输出 ${http_code} 返回码
 
 
 
