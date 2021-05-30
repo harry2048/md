@@ -157,6 +157,47 @@ SENTINEL sentinels mymaster
 >
 > 4.0版本的混合持久化默认关闭的，通过`aof-use-rdb-preamble`配置参数控制，yes则表示开启，no表示禁用，5.0之后默认开启。
 
+## 4. springSession的使用
+
+> 代码中根据request获取session，正常使用，无需修改。springSession将session信息存入redis中，实现分布式session。
+>
+> 配置springSession的序列化器
+
+### 1 pom.xml
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.session</groupId>
+    <artifactId>spring-session-data-redis</artifactId>
+</dependency>
+```
+
+### 2 开启springsession
+
+```java
+import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+
+@Configuration
+@EnableRedisHttpSession
+public class RedisConfiguration {
+
+    /**
+     * spring session serializer
+     */
+    @Bean
+    RedisSerializer<Object> springSessionDefaultRedisSerializer() {
+        return new FastJsonRedisSerializer(Object.class);
+    }
+}
+```
+
 
 
 
