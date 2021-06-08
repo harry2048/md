@@ -91,6 +91,31 @@
 * system  
 
   配合systemPath标签使用，读取本地jar包
+  
+  例子：
+  
+  ```xml
+      <dependency>
+          <groupId>xxx</groupId>
+          <artifactId>xxx</artifactId>
+          <version>0.0.1</version>
+          <scope>system</scope>
+          <systemPath>${project.basedir}/lib/boy-0.0.1-SNAPSHOT.jar</systemPath>
+      </dependency>
+  </dependencies>
+  <build>
+      <resources>
+          <resource>
+              <directory>lib</directory>
+              <targetPath>/BOOT-INF/lib/</targetPath>
+              <includes>
+                  <include>**/*.jar</include>
+              </includes>
+          </resource>
+      </resources>
+  ```
+  
+  
 
 ## 5 排除依赖
 
