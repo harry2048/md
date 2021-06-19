@@ -8,3 +8,4 @@
 8. web
 9. RSA
 10. jwt
+11. centos7 install
