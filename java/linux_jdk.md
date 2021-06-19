@@ -51,6 +51,12 @@ java -version
 
 # linux 安装
 
+安装centos7:  https://www.osyunwei.com/archives/7829.html
+
+错误：ifconfig command is not found
+
+执行命令：yum install -y net-tools
+
 ## 静态ip：
 
 > su
@@ -79,15 +85,8 @@ java -version
 >
 > systemctl restart network
 >
-> 
->
-> 安装centos7:  https://www.osyunwei.com/archives/7829.html
->
-> 错误：ifconfig command is not found
->
-> 执行命令：yum install -y net-tools
 
-
+## hosts文件中指定ip
 
 vi /etc/hosts 后
 
