@@ -1,8 +1,30 @@
-## jdbcType 对应数据库
+# centos7安装oracle19c
+
+安装oracle前，先配置好/etc/hosts ，需指定当前ip，例192.168.85.144
+
+https://www.linuxidc.com/Linux/2019-06/158985.htm
+
+## 重启监听
+
+> lsnrctl
+>
+> stop
+>
+> start
+
+## 重启oracle
+
+> sqlplus / as sysdba
+>
+> startup  # 开启
+>
+> shutdown immediate  # 关闭
+
+# jdbcType 对应数据库
 
 http://blog.csdn.net/loongshawn/article/details/50496460
 
-## oracle删除数据
+# oracle删除数据
 
 > 删除当前用户下所有表里面的数据
 
@@ -33,5 +55,94 @@ begin
     execute immediate 'drop SEQUENCE' || cur2.table_name;
   end loop;
 end;
+```
+
+# 导出数据泵
+
+1 先在当前用户下，例  oracle用户下创建导出目录，必须创建。
+
+> create or replace directory dumpdir as '/home/oracle';
+
+2 导出脚本
+
+> c##oracle/root@ORCLCDB  数据库用户名/密码@实例名
+>
+> sshpass -p  root(远程服务器的密码)
+>
+> backup.dmp 备份文件的名称
+
+```sh
+#!/bin/sh
+. /etc/profile
+. ~/.bash_profile
+echo "$(date +'%Y-%m-%d %H:%M:%S') export start";
+mv /home/oracle/backup.dmp /home/oracle/backup.dmp.bak;
+expdp c##oracle/root@ORCLCDB dumpfile=backup.dmp directory=DUMPDIR;
+sshpass -p root scp -r /home/oracle/backup.dmp oracle@192.168.85.145:/home/oracle/;
+echo "$(date +'%Y-%m-%d %H:%M:%S') export success";
+# end
+```
+
+3 定时任务，每俩分钟
+
+在linux下，crontab -e
+
+```sh
+*/2 * * * * nohup /bin/sh /home/oracle/exp_imp/exportOracle.sh >> /home/oracle/exp_imp/log.txt &
+```
+
+若定时任务不生效
+
+在~/.bash_profile中添加
+
+```sh
+export ORACLE_BASE=/opt/oracle/
+export ORACLE_HOME=/opt/oracle/product/19c/dbhome_1
+export ORACLE_SID=ORCLCDB
+export PATH=$PATH:$ORACLE_HOME/bin
+```
+
+# 导入数据泵
+
+1 先在当前用户下，例  oracle用户下创建导出目录，必须创建。
+
+> create or replace directory dumpdir as '/home/oracle';
+
+2 导入脚本
+
+> table_exists_action=replace  导入时，若表存在，则先删除表
+
+```sh
+#!/bin/sh
+# update if table is exist
+. /etc/profile
+. ~/.bash_profile
+echo "$(date +'%Y-%m-%d %H:%M:%S') import start";
+impdp c##oracle/root@ORCLCDB dumpfile=backup.dmp directory=dumpdir table_exists_action=replace
+echo "$(date +'%Y-%m-%d %H:%M:%S') import success";
+```
+
+3 定时任务，每俩分钟
+
+在linux下，crontab -e
+
+```sh
+*/2 * * * * nohup /bin/sh /home/oracle/exp_imp/importOracle.sh >> /home/oracle/exp_imp/log.txt &
+```
+
+# 表空间
+
+```sql
+#创建用户
+create user c##oracle IDENTIFIED BY root; 
+# 授权
+grant dba,connect,resource,unlimited tablespace to c##oracle container=all;
+# 在指定用户登录下，创建表空间
+create tablespace GDP datafile '/opt/oracle/product/19c/tables/gdp.dbf' size 200M  AUTOEXTEND ON;
+# 创建临时表空间
+create temporary tablespace GDP_temp  tempfile '\opt\oracle\product\19c\tables\gdp_temp.dbf' size 100m reuse autoextend on next 20m maxsize unlimited; 
+# 给用户指定表空间
+alter user c##oracle default tablespace GDP temporary tablespace GDP_temp;
+alter user c##oracle default tablespace 'GDP';
 ```
 

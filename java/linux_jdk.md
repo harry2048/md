@@ -88,9 +88,21 @@ java -version
 
 ## hosts文件中指定ip
 
-vi /etc/hosts 后
+hostname  www  #设置主机名为www
 
-修改127.0.0.1 为192.168.85.144，要指定ip
+vi /etc/hostname #编辑配置文件
+
+www   #修改localhost.localdomain为www
+
+:wq!  #保存退出
+
+vi /etc/hosts #编辑配置文件
+
+192.168.85.144   localhost  www   #修改localhost.localdomain为www  要指定ip
+
+:wq!  #保存退出
+
+shutdown -r now  #重启系统
 
 # hadoop安装
 
