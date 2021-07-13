@@ -170,4 +170,22 @@ imp oracle_username/oracle_password file=exp_oracle.dmp log=imp.log fromuser=nam
 >
 > https://www.cnblogs.com/xuchen0117/p/14375211.html
 
- 
+# oracle死锁
+
+> https://blog.csdn.net/baidu_30809315/article/details/107234267
+
+查看被锁的表
+
+```sql
+select object_name, machine, s.sid, s.serial#
+  from v$locked_object l, dba_objects o, v$session s
+ where l.object_id = o.OBJECT_ID
+       and l.session_id = s.sid;
+```
+
+kill
+
+```sql
+alter system kill session '277,1817';
+```
+
