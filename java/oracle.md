@@ -146,3 +146,28 @@ alter user c##oracle default tablespace GDP temporary tablespace GDP_temp;
 alter user c##oracle default tablespace 'GDP';
 ```
 
+# exp 和 imp
+
+效率比数据泵低，但不用创建文件夹。需要在oracle用户下，指定导出和导入用户名
+
+> https://blog.csdn.net/jqdelove/article/details/112508685
+>
+> https://blog.csdn.net/lan19900810/article/details/92783907?utm_term=oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E9%97%B4%E5%AE%9A%E6%97%B6%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-2-92783907&spm=3001.4430
+
+```sh
+# 导出 都是相对路径
+oracle_username=name
+oracle_password=pass
+exp oracle_username/oracle_password file=exp_oracle.dmp log=exp.log fromuser=name
+
+# 导入，导入前先清库
+imp oracle_username/oracle_password file=exp_oracle.dmp log=imp.log fromuser=name touser=name ignore=y
+```
+
+# SpringBoot oracle 用户名和密码加密
+
+> jasypt
+>
+> https://www.cnblogs.com/xuchen0117/p/14375211.html
+
+ 

@@ -79,3 +79,23 @@ exit
 ## 9. ssh公钥
 
 > https://blog.csdn.net/feinifi/article/details/71169885
+
+## 10. 复位本地分支
+
+> 将本地分支强制性复位到远程分支
+>
+> git checkout --force -B develop本地分支名 origin/develop 远程分支名
+
+## 11. 复制commit
+
+当前分支消亡，文件需要提交到其他分支
+
+> 先在当前分支commit
+>
+> 切换到目标分支，更新本地，git cherry-pick commit_id，复制指定commit  id
+>
+> 然后提交
+
+cherry-pick报错，则需先解决冲突，然后git add 相应的文件，再使用git cherry-pick --continue
+
+或者放弃  git cherry-pick --abort

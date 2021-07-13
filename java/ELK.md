@@ -285,7 +285,9 @@ threadpool.index.size: 100
 threadpool.index.queue_size: 500
 ```
 
+### es集群设置密码
 
+> https://blog.csdn.net/b1303110335/article/details/108063349
 
 ## Logstash
 
